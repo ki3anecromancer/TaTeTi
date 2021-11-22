@@ -1,0 +1,128 @@
+﻿<Window x:Class="Necrolandia.TaTeTi"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Necrolandia"
+        mc:Ignorable="d"
+        Title="Ta-Te-Ti" Height="500" Width="500" ResizeMode="NoResize">
+
+    <Grid>
+        <!-- Definir 2x2 -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Crear Ta-Te-Ti 3x3 -->
+        <TextBlock Grid.Row="1" Grid.Column="0" Background="Black"/>
+        
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <!-- Botones -->
+            <Button Grid.Row="0" Grid.Column="0" FontSize="50" Margin="2" IsEnabled="false" Name="B0_0" Click="BB0_0"/>
+            <Button Grid.Row="0" Grid.Column="1" FontSize="50" Margin="2" IsEnabled="False" Name="B0_1" Click="BB0_1"/>
+            <Button Grid.Row="0" Grid.Column="2" FontSize="50" Margin="2" IsEnabled="False" Name="B0_2" Click="BB0_2"/>
+            <Button Grid.Row="1" Grid.Column="0" FontSize="50" Margin="2" IsEnabled="False" Name="B1_0" Click="BB1_0"/>
+            <Button Grid.Row="1" Grid.Column="1" FontSize="50" Margin="2" IsEnabled="False" Name="B1_1" Click="BB1_1"/>
+            <Button Grid.Row="1" Grid.Column="2" FontSize="50" Margin="2" IsEnabled="False" Name="B1_2" Click="BB1_2"/>
+            <Button Grid.Row="2" Grid.Column="0" FontSize="50" Margin="2" IsEnabled="False" Name="B2_0" Click="BB2_0"/>
+            <Button Grid.Row="2" Grid.Column="1" FontSize="50" Margin="2" IsEnabled="False" Name="B2_1" Click="BB2_1"/>
+            <Button Grid.Row="2" Grid.Column="2" FontSize="50" Margin="2" IsEnabled="False" Name="B2_2" Click="BB2_2"/>
+        </Grid>
+
+        <!-- Ventana de comienzo -->
+        <StackPanel Grid.Row="1" Grid.Column="0" Background="SandyBrown" Name="VentanaComienzo">
+            <Label Margin="10, 10, 0, 0" FontSize="14" FontWeight="DemiBold">Cantidad de jugadores:</Label>
+            <RadioButton Margin="10, 0, 0, 0" FontSize="14" FontWeight="DemiBold" Name="CantJugadores1">1</RadioButton>
+            <RadioButton Margin="10, 0, 0, 0" FontSize="14" FontWeight="DemiBold" Name="CantJugadores2">2</RadioButton>
+
+            <Button Click="Boton_Continuar" Name="BotonContinuar" Width="70" HorizontalAlignment="Left" Margin="10, 5, 5, 5">Continuar</Button>
+
+            
+
+            <!-- Elegir nombres -->
+            <StackPanel Name="NombrarJugador1" Visibility="Hidden">
+                <Label Margin="5, 20, 0, 0" FontSize="15" FontWeight="DemiBold">Nombre jugador 1:</Label>
+                <TextBox Name="NombJugador1" Width="90" MaxLength="10" HorizontalAlignment="Left" Margin="10, 0, 0, 0"/>
+          
+                <Label Margin="5, 0, 0, 0" FontSize="12" FontWeight="DemiBold">Elija que pieza desea ser:</Label>
+                <RadioButton Margin="10, 0, 0, 0" FontSize="10" FontWeight="DemiBold" Name="piezaO">O</RadioButton>
+                <RadioButton Margin="10, 0, 0, 0" FontSize="10" FontWeight="DemiBold" Name="piezaX">X</RadioButton>
+
+                <!-- Opciones si es 1 jugador-->
+                <StackPanel Name="UnJugadorOpciones" Visibility="Collapsed">
+                    <CheckBox Name="ActivarModoTornado" Margin="10, 15">Modo Tornado</CheckBox>
+                    <Button Click="Boton_Finalizar" Width="70" HorizontalAlignment="Left" Margin="10, 5, 5, 5">Finalizar</Button>                    
+                </StackPanel>
+                
+            </StackPanel>
+
+            <StackPanel Name="NombrarJugador2" Visibility="Hidden">
+                <Label Margin="5, 10, 0, 0" FontSize="15" FontWeight="DemiBold">Nombre jugador 2:</Label>
+                <TextBox Name="NombJugador2" Width="90" MaxLength="10" HorizontalAlignment="Left" Margin="10, 0, 0, 0"/>
+
+                <Button Click="Boton_Finalizar" Width="70" HorizontalAlignment="Left" Margin="10, 5, 5, 5">Finalizar</Button>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Colores de fondo -->
+        <TextBlock Grid.Row="1" Grid.Column="1" Background="MediumSeaGreen"/>
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Background="MediumSeaGreen"/>
+        
+
+        <!-- Opciones de la derecha -->
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            
+            <!-- Botones -->
+            <Button Height="40" FontSize="16" FontWeight="DemiBold" Margin="2, 10" Click="Boton_Comenzar">Comenzar</Button>
+            <Button Height="40" FontSize="16" FontWeight="DemiBold" Click="Boton_Reiniciar" Margin="2, 0">Reiniciar</Button>
+            <Button Height="50" FontSize="16" FontWeight="DemiBold" Margin="2, 10" Click="Boton_NuevaPartida">
+                <StackPanel>
+                    <TextBlock>Nueva</TextBlock>
+                    <TextBlock>Partida</TextBlock>
+                </StackPanel>
+            </Button>
+
+            <!-- Jugadores -->
+            <TextBlock FontSize="14" FontWeight="DemiBold" Foreground="Red" Margin="5, 10, 2, 0" Name="Jugador1"/>
+            <TextBlock FontSize="14" FontWeight="DemiBold" Margin="5, 0, 2, 0" Name="Puntaje1"/>
+
+            <TextBlock FontSize="14" FontWeight="DemiBold" Foreground="Red" Margin="5, 40, 2, 0" Name="Jugador2"/>
+            <TextBlock FontSize="14" FontWeight="DemiBold" Margin="5, 0, 2, 0" Name="Puntaje2"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <!-- Título -->
+            <Label FontSize="45" FontWeight="Black" Foreground="Gold">TA-TE-TI</Label>
+
+            <!-- Mostrar turno de jugador -->
+            <Grid Name="MostrarTurno" Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" FontSize="18" FontWeight="DemiBold" HorizontalContentAlignment="Right" Content="Turno de:"/>
+                <Label Grid.Column="1" FontSize="18" FontWeight="Bold" Foreground="Red" Name="TurnoNombre"/>
+            </Grid>
+            
+        </StackPanel>
+
+    </Grid>
+</Window>
